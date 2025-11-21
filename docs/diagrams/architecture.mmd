@@ -1,0 +1,20 @@
+flowchart LR
+  subgraph Frontend [React SPA]
+    UI[UI Components]
+    State[App State]
+  end
+  subgraph Backend [Express API]
+    Auth[Auth & RBAC]
+    Q[Questions]
+    E[Exams]
+    R[Results]
+  end
+  DB[(SQLite / PostgreSQL)]
+  UI -->|HTTP/JSON| Auth
+  UI --> Q
+  UI --> E
+  UI --> R
+  Auth --> DB
+  Q --> DB
+  E --> DB
+  R --> DB

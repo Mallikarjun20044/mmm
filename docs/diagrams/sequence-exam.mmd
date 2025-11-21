@@ -1,0 +1,18 @@
+sequenceDiagram
+  participant Stu as Student
+  participant FE as Frontend
+  participant BE as Backend
+  participant DB as DB
+  Stu->>FE: Start Exam
+  FE->>BE: POST /exams/:id/start
+  BE->>DB: Create attempt
+  DB-->>BE: Attempt id
+  BE-->>FE: Attempt token/id
+  loop every 10s
+    FE->>BE: POST /attempts/:id/save (answers)
+    BE->>DB: Upsert answers
+  end
+  Stu->>FE: Submit
+  FE->>BE: POST /attempts/:id/submit
+  BE->>DB: Evaluate & store result
+  BE-->>FE: Result summary

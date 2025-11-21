@@ -1,0 +1,18 @@
+%% DFD Level 2: Exam Flow
+flowchart TB
+  subgraph Auth
+    L[Login] --> T[Issue JWT]
+  end
+  subgraph Exam Lifecycle
+    C[Create Exam] --> S[Schedule Window]
+    S --> Q[Associate Questions]
+    Start[Start Attempt] --> A1[Autosave Answers]
+    A1 --> Sub[Submit]
+    Sub --> Eval[Auto Evaluate]
+    Eval --> Res[Publish Results]
+  end
+  DB[(DB)] --- C
+  DB --- Q
+  DB --- Start
+  DB --- Eval
+  DB --- Res

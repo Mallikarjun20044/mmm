@@ -1,0 +1,9 @@
+%% Mermaid Use Case Diagram (approximation using flowchart)
+flowchart TD
+  A[Admin] -->|Manages| UC1(Manage Users)
+  A -->|Manages| UC2(Manage Questions)
+  A -->|Schedules| UC3(Create/Schedule Exams)
+  A -->|Publishes| UC4(Publish Results)
+  S[Student] -->|Authenticates| UC5(Login)
+  S -->|Attempts| UC6(Take Exam)
+  S -->|Views| UC7(View Results)

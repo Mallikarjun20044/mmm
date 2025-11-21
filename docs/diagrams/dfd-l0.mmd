@@ -1,0 +1,7 @@
+%% DFD Level 0
+flowchart LR
+  ext1[(Admin)] --> P0[Online Examination System]
+  ext2[(Student)] --> P0
+  P0 --> ext1
+  P0 --> ext2
+  D1[(Database)] --- P0

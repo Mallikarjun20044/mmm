@@ -1,0 +1,11 @@
+sequenceDiagram
+  participant S as Student
+  participant FE as Frontend
+  participant BE as Backend
+  participant DB as DB
+  S->>FE: Enter email/password
+  FE->>BE: POST /auth/login
+  BE->>DB: Validate credentials
+  DB-->>BE: User record
+  BE-->>FE: 200 OK (JWT)
+  FE-->>S: Redirect to Dashboard

@@ -1,0 +1,62 @@
+erDiagram
+  USERS {
+    int id PK
+    string name
+    string email
+    string password_hash
+    string role
+    datetime created_at
+  }
+  QUESTIONS {
+    int id PK
+    string subject
+    string topic
+    string type
+    string text
+    string options_json
+    string answer_key
+    int marks
+    int negative_marks
+    datetime created_at
+  }
+  EXAMS {
+    int id PK
+    string title
+    int duration_minutes
+    datetime start_time
+    datetime end_time
+    datetime created_at
+  }
+  EXAM_QUESTIONS {
+    int exam_id FK
+    int question_id FK
+    int seq
+  }
+  ATTEMPTS {
+    int id PK
+    int user_id FK
+    int exam_id FK
+    string status
+    datetime started_at
+    datetime submitted_at
+  }
+  ANSWERS {
+    int attempt_id FK
+    int question_id FK
+    string response
+    int marks_awarded
+  }
+  RESULTS {
+    int id PK
+    int attempt_id FK
+    int total_marks
+    int obtained_marks
+    string status
+    datetime published_at
+  }
+  USERS ||--o{ ATTEMPTS : makes
+  EXAMS ||--o{ ATTEMPTS : has
+  EXAMS ||--o{ EXAM_QUESTIONS : composed_of
+  QUESTIONS ||--o{ EXAM_QUESTIONS : included
+  ATTEMPTS ||--o{ ANSWERS : contains
+  ATTEMPTS ||--|| RESULTS : produces

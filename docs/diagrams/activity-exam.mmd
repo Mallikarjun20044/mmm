@@ -1,0 +1,10 @@
+flowchart TD
+  A[Login] --> B[Select Exam]
+  B --> C{Within Schedule?}
+  C -- No --> X[Wait]
+  C -- Yes --> D[Start Attempt]
+  D --> E[Answer Questions]
+  E --> F[Autosave]
+  E --> G[Submit]
+  G --> H[Auto-Evaluate]
+  H --> I[View Results]

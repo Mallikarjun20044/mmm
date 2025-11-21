@@ -1,0 +1,14 @@
+%% DFD Level 1
+flowchart LR
+  Admin[(Admin)] --> P1[Auth & RBAC]
+  Student[(Student)] --> P1
+  P1 --> Admin
+  P1 --> Student
+  P1 --> P2[Question Bank]
+  P1 --> P3[Exams]
+  P3 --> P4[Attempts & Evaluation]
+  P4 --> P5[Results]
+  D[(Relational DB)] --- P2
+  D --- P3
+  D --- P4
+  D --- P5

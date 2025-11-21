@@ -1,0 +1,8 @@
+stateDiagram-v2
+  [*] --> NotStarted
+  NotStarted --> InProgress: start()
+  InProgress --> InProgress: autosave()
+  InProgress --> Submitted: submit()
+  Submitted --> Evaluated: evaluate()
+  Evaluated --> Published: publish()
+  Published --> [*]

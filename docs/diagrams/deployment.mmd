@@ -1,0 +1,7 @@
+flowchart LR
+  Dev[Developer Workstation] --> CI[CI/CD]
+  CI --> S1[App Server]
+  CI --> DB[(RDBMS)]
+  U1[(Admin Browser)] --> S1
+  U2[(Student Browser)] --> S1
+  S1 --> DB

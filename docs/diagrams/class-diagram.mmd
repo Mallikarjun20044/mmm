@@ -1,0 +1,34 @@
+classDiagram
+  class User {
+    +id: number
+    +name: string
+    +email: string
+    +role: string
+  }
+  class Question {
+    +id: number
+    +subject: string
+    +topic: string
+    +type: string
+    +marks: number
+  }
+  class Exam {
+    +id: number
+    +title: string
+    +durationMinutes: number
+    +start: Date
+    +end: Date
+  }
+  class Attempt {
+    +id: number
+    +status: string
+  }
+  class Result {
+    +id: number
+    +obtained: number
+    +total: number
+  }
+  User --> Attempt
+  Exam --> Attempt
+  Attempt --> Result
+  Exam --> Question
