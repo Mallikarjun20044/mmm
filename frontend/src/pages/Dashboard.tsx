@@ -5,7 +5,8 @@ export default function Dashboard({ token, onLogout }: { token: string, onLogout
   const [error, setError] = useState('')
 
   useEffect(() => {
-    fetch('http://localhost:3001/exams', { headers: { Authorization: `Bearer ${token}` }})
+     const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:3001'
+     fetch(`${API_BASE}/exams`, { headers: { Authorization: `Bearer ${token}` }})
       .then(async r => { const j = await r.json(); if (!r.ok) throw new Error(j.error||'Failed'); return j; })
       .then(setExams)
       .catch(e => setError(e.message))
